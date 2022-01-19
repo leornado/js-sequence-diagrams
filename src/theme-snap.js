@@ -58,9 +58,13 @@ if (typeof Snap != 'undefined') {
             l[LINETYPE.DOTTED] = '6,2';
 
             var that = this;
-            this.waitForFont(function() {
+            if (options && options.waitForFont === false) {
               resume(that);
-            });
+            } else {
+              this.waitForFont(function() {
+                  resume(that);
+                });
+            }
           },
 
     // Wait for loading of the font
